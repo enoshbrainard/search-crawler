@@ -12,9 +12,8 @@ export default function Home() {
     setloading(true);
     try {
       const res = await fetch(
-        `${
-          process.env.NEXT_PUBLIC_API_URL
-        }/api/search?query=${encodeURIComponent(query)}&depth=${depth}`
+        `${process.env.NEXT_PUBLIC_API_URL.replace(/\/+$/, "")}/api/search?query=${encodeURIComponent(query)}&depth=${depth}`
+
       );
       const data = await res.json();
       setresults(data);
